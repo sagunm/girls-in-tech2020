@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "673721221380",
+    "firebase_url": "https://ocr-demo-b7023.firebaseio.com",
+    "project_id": "ocr-demo-b7023",
+    "storage_bucket": "ocr-demo-b7023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673721221380:android:fd786bf1f2bd397aeb1051",
+        "android_client_info": {
+          "package_name": "com.girlshackathon.breastCancerAwareness"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673721221380-rf39pebjp870tbbqbruvq19p5q7596g1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdGQ8A7-gWJ3w2lxJs_7dg-j4iTnDRBcA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673721221380-rf39pebjp870tbbqbruvq19p5q7596g1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
