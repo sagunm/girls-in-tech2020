@@ -1,0 +1,24 @@
+import 'package:easy_localization/easy_localization.dart';
+
+const String kAppName = "bea";
+const String kTranslator = "Translator";
+const String kOriginalDocument = "Original Document";
+const String kTranslatedDocument = "Translated Document";
+const String kUploadDocument = "Translate Document";
+const String kTakePicture = "Take Picture";
+const String kdocumentTranslator = "Document Translator";
+const String kGlossary = "Take me to Glossary";
+const String kFindADoctor = "Find a Doctor";
+const String kMyQuestions = "My Questions";
+const String kViewDocuments = "View Uploaded Documents";
+const String kKnowMore = "Know More";
+String title = 'title'.tr();
+String myFiles = 'My Files';
+String glossary = 'Glossary';
+String hintSearch = 'Search';
+String label2 = 'Home';
+String label3 = 'My Files';
+String label4 = 'Saved Questions';
+String label5 = 'Settings';
+String homeScreenSubtitle = 'What can we do today?';
+String noInternetMessage = "Please connect to the internet!";
