@@ -1,11 +1,9 @@
 import 'dart:io';
-
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:breastCancerAwareness/widgets/original_document_widget.dart';
 import 'package:breastCancerAwareness/widgets/translated_document_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:breastCancerAwareness/utilities/Constants.dart';
-
 
 class TranslatorViewPagerScreen extends StatefulWidget {
   static const routeName = "TranslatorPageViewScreenRoute";
@@ -36,7 +34,6 @@ class _TranslatorViewPagerScreenState extends State<TranslatorViewPagerScreen> {
       appBar: AppBar(
         title: Text(
           kAppName,
-          style: Theme.of(context).textTheme.headline,
         ),
       ),
       body: pageView,

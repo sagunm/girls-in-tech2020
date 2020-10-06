@@ -1,9 +1,15 @@
+import 'package:breastCancerAwareness/models/languages.dart';
+import 'package:breastCancerAwareness/providers/auth_provider.dart';
+import 'package:breastCancerAwareness/screens/language_selection_screen.dart';
+import 'package:breastCancerAwareness/screens/signup_screen.dart';
+import 'package:breastCancerAwareness/screens/termsAndCondition_screen.dart';
+import 'package:breastCancerAwareness/styles/appIcons.dart';
+import 'package:breastCancerAwareness/utilities/utility_methods.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:breastCancerAwareness/utilities/Strings.dart';
+import 'package:provider/provider.dart';
 
 import 'home_screen.dart';
-
-
 
 //This is the splash screen. It is shown for 5 seconds and the app navigates to the home Screen
 
@@ -18,9 +24,27 @@ class _SplashScreenState extends State<SplashScreen> {
     return true;
   }
 
-  void _navigateToHomeScreen() {
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
+//navigate to home screen or language selection screen based on the condition isFirstTime
+  void _navigateToHomeScreen() async {
+    await auth.checkForFirstTimeUser();
+
+    if (auth.userSelectedLanguageCode.isEmpty) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (ctx) => LanguageSelectionScreen()));
+    } else if (auth.userName.toString().isEmpty) {
+      //Utility.localize(context, auth.userSelectedLanguageCode);
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
+      // Navigator.of(context)
+      //     .pushReplacement(MaterialPageRoute(builder: (ctx) => SignUpScreen()));
+    } else if (!auth.termsConditionsAccepted) {
+      Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (ctx) => TermsAndCondition()));
+    } else {
+      //Utility.localize(context, auth.userSelectedLanguageCode);
+      Navigator.of(context)
+          .pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
+    }
   }
 
   @override
@@ -31,17 +55,32 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
+  Auth auth;
   @override
   Widget build(BuildContext context) {
+    auth = Provider.of<Auth>(context, listen: false);
+
     return Scaffold(
       body: Container(
-        color: Theme.of(context).accentColor,
-        child: Center(
-          child: Text(
-            kAppName,
-            style: Theme.of(context).textTheme.headline,
+        decoration: new BoxDecoration(
+            image: new DecorationImage(
+          image: AssetImage(splash_bg),
+          fit: BoxFit.fill,
+        )),
+        child: Stack(children: [
+          Container(
+            margin: EdgeInsets.only(top: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(child: Center(child: Image.asset(logo))),
+                Image.asset(avatar)
+              ],
+            ),
           ),
-        ),
+          Positioned(right: 20, bottom: 75, child: Image.asset(splashText))
+        ]),
       ),
     );
   }

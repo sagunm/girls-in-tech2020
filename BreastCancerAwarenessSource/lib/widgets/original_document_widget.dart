@@ -1,9 +1,7 @@
 import 'dart:io';
+import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:flutter/material.dart';
-
-
-
 
 class OriginalDocumentWidget extends StatelessWidget {
   final File _pickedImage;
@@ -15,9 +13,12 @@ class OriginalDocumentWidget extends StatelessWidget {
       margin: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
-          Text(
-            kOriginalDocument,
-            style: Theme.of(context).textTheme.title,
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Text(
+              kOriginalDocument,
+              style: kButtonStyle,
+            ),
           ),
           Expanded(
             child: Container(
@@ -25,6 +26,7 @@ class OriginalDocumentWidget extends StatelessWidget {
               height: double.maxFinite,
               width: double.maxFinite,
               decoration: BoxDecoration(
+                  border: Border.all(color: Theme.of(context).primaryColor),
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
                       image: FileImage(_pickedImage), fit: BoxFit.fill)),

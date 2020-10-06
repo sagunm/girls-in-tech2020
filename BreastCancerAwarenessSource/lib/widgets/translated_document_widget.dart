@@ -1,34 +1,62 @@
+import 'dart:io';
+import 'package:breastCancerAwareness/styles/styles.dart';
+import 'package:breastCancerAwareness/utilities/save_pdf.dart';
 import 'package:flutter/material.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 
-
-class TranslatedDocumentWidget extends StatelessWidget {
+class TranslatedDocumentWidget extends StatefulWidget {
   final List<String> _scannedText;
   TranslatedDocumentWidget(this._scannedText);
+
+  @override
+  _TranslatedDocumentWidgetState createState() =>
+      _TranslatedDocumentWidgetState();
+}
+
+class _TranslatedDocumentWidgetState extends State<TranslatedDocumentWidget> {
+  File _imageFile;
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(10),
       child: Column(
         children: <Widget>[
-          Text(
-            kTranslatedDocument,
-            style: Theme.of(context).textTheme.title,
+          Container(
+            padding: EdgeInsets.all(10),
+            child: Text(
+              kTranslatedDocument,
+              style: kButtonStyle,
+            ),
           ),
-
-          
           Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              margin: EdgeInsets.all(10),
-              child: ListView.builder(
-                itemBuilder: (context, i) {
-                  return Text(_scannedText[i]);
-                },
-                itemCount: _scannedText.length,
-              ),
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Theme.of(context).primaryColor),
+                      borderRadius: BorderRadius.circular(5)),
+                  margin: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(5),
+                  child: _imageFile != null
+                      ? Image.file(_imageFile)
+                      : ListView.builder(
+                          itemBuilder: (context, i) {
+                            return Text(widget._scannedText[i]);
+                          },
+                          itemCount: widget._scannedText.length,
+                        ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(10),
+                  alignment: Alignment.bottomRight,
+                  child: IconButton(
+                      color: Theme.of(context).primaryColorLight,
+                      icon: Icon(Icons.download_outlined),
+                      onPressed: () async {
+                        await report(context, widget._scannedText);
+                      }),
+                )
+              ],
             ),
           ),
         ],
