@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 
-const String kAppName = "Bea";
+const String kAppName = "bea";
 const String kTranslator = "Translator";
 const String kOriginalDocument = "Original Document";
 const String kTranslatedDocument = "Translated Document";
