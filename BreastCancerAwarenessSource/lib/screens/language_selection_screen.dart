@@ -93,25 +93,25 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                         items: languageCodeDropDown,
                         isDense: false,
                         onChanged: (value) async {
-                          _selectedValue = value;
+                          setState(() {
+                            _selectedValue = value;
+                          });
+
                           await auth.selectLanguage(_selectedValue);
 
-                          setState(() async {
-                            try {
-                              String _languagecode =
-                                  _selectedValue.toString().split(".")[1];
-                              print(_languagecode);
-                              EasyLocalization.of(context).deleteSaveLocale();
+                          try {
+                            String _languagecode =
+                                _selectedValue.toString().split(".")[1];
+                            print(_languagecode);
+                            EasyLocalization.of(context).deleteSaveLocale();
 
-                              context.locale = Locale(_languagecode,
-                                  languageCodeCountryMap[_selectedValue]);
-                            } on Exception catch (e) {
-                              print(e.toString());
-                            }
-                            await Future.delayed(Duration(milliseconds: 2000));
-                            Navigator.of(context)
-                                .pushNamed(HomeScreen.routeName);
-                          });
+                            context.locale = Locale(_languagecode,
+                                languageCodeCountryMap[_selectedValue]);
+                          } on Exception catch (e) {
+                            print(e.toString());
+                          }
+                          await Future.delayed(Duration(milliseconds: 2000));
+                          Navigator.of(context).pushNamed(HomeScreen.routeName);
                         },
                         value: _selectedValue,
                       ),
