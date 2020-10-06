@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       _selectedIndex = index;
                     });
                   },
-                  selectedItemColor: Colors.blueGrey[900],
+                  selectedItemColor: Color(0xff333333),
                   unselectedItemColor: Colors.grey,
                   showSelectedLabels: true,
                   showUnselectedLabels: true,
@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       color: Color(0xff4F4F4F),
                       fontWeight: FontWeight.normal,
                       fontSize: 14),
-                  type: BottomNavigationBarType.fixed,
+                  type: BottomNavigationBarType.shifting,
                   items: [
                     BottomNavigationBarItem(
                       label: label2,
