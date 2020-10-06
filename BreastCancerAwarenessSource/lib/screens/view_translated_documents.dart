@@ -42,39 +42,47 @@ class _ViewTranslatedDocumentListState
               child: Container(
                 margin: EdgeInsets.all(10),
                 padding: EdgeInsets.all(5),
+                width: double.infinity,
                 decoration: BoxDecoration(
                     border: Border.all(color: Theme.of(context).primaryColor),
                     borderRadius: BorderRadius.circular(40)),
-                child: ListView.builder(
-                  itemBuilder: (ctx, i) {
-                    return Container(
-                      padding: EdgeInsets.only(
-                          bottom: 10, left: 5, top: 5, right: 5),
-                      child: Column(
-                        children: [
-                          ListTile(
-                            onTap: () {
-                              Navigator.of(context).pushNamed(
-                                  PdfViewerPage.routeName,
-                                  arguments: {"path": file[i].path});
-                            },
-                            title: Text(
-                              basename(file[i].path),
-                              style: kButtonStyle,
+                child: (file.length != 0)
+                    ? ListView.builder(
+                        itemBuilder: (ctx, i) {
+                          return Container(
+                            padding: EdgeInsets.only(
+                                bottom: 10, left: 5, top: 5, right: 5),
+                            child: Column(
+                              children: [
+                                ListTile(
+                                  onTap: () {
+                                    Navigator.of(context).pushNamed(
+                                        PdfViewerPage.routeName,
+                                        arguments: {"path": file[i].path});
+                                  },
+                                  title: Text(
+                                    basename(file[i].path),
+                                    style: kButtonStyle,
+                                  ),
+                                ),
+                                SizedBox(
+                                  height: 1,
+                                  child: Divider(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
+                                )
+                              ],
                             ),
-                          ),
-                          SizedBox(
-                            height: 1,
-                            child: Divider(
-                              color: Theme.of(context).primaryColor,
-                            ),
-                          )
-                        ],
+                          );
+                        },
+                        itemCount: file.length,
+                      )
+                    : Center(
+                        child: const Text(
+                          "No files found",
+                          style: buttonTextStyle,
+                        ),
                       ),
-                    );
-                  },
-                  itemCount: file.length,
-                ),
               ),
             ),
           ],
