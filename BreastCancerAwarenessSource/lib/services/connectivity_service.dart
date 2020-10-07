@@ -18,6 +18,8 @@ class ConnectivityService {
     ConnectivityResult result = await Connectivity().checkConnectivity();
 
     return _getStatusFromResult(result);
+
+
   }
 
   ConnectionStatus _getStatusFromResult(ConnectivityResult result) {

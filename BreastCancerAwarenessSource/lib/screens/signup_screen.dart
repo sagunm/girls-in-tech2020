@@ -1,6 +1,4 @@
-import 'package:breastCancerAwareness/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatefulWidget {
   static const signupRoute = "SignUpRoute";
@@ -11,7 +9,6 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-    var auth = Provider.of<Auth>(context, listen: false);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,

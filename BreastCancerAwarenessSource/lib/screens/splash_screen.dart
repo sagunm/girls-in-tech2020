@@ -1,11 +1,7 @@
-import 'package:breastCancerAwareness/models/languages.dart';
 import 'package:breastCancerAwareness/providers/auth_provider.dart';
 import 'package:breastCancerAwareness/screens/language_selection_screen.dart';
-import 'package:breastCancerAwareness/screens/signup_screen.dart';
 import 'package:breastCancerAwareness/screens/termsAndCondition_screen.dart';
 import 'package:breastCancerAwareness/styles/appIcons.dart';
-import 'package:breastCancerAwareness/utilities/utility_methods.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

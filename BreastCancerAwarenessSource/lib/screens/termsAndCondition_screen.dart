@@ -10,7 +10,6 @@ class TermsAndCondition extends StatefulWidget {
 class _TermsAndConditionState extends State<TermsAndCondition> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     var auth = Provider.of<Auth>(context, listen: false);
     return Scaffold(
       body: Column(

@@ -9,3 +9,4 @@ const splashText = "assets/icons/splash_text.png";
 const downArrow = "assets/icons/down_arrow.png";
 
 const avatarHome = "assets/icons/avatar_home.png";
+const gradient_bg = "assets/icons/gradient_bg.png";

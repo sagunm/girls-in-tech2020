@@ -5,7 +5,6 @@ import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Constants.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:breastCancerAwareness/utilities/utility_methods.dart';
-import 'package:connectivity/connectivity.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,11 +26,10 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
   List<String> _convertedLines = [];
   static const String _CAMERA = "CAMERA";
   static const String _GALLERY = "GALLERY";
+  final picker = ImagePicker();
   bool _isLoading = false;
-  Connectivity _connectivity;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _isLoading = false;
   }
@@ -53,9 +51,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
     switch (selectedOption) {
       case _CAMERA:
         try {
-          var tempFile =
-              // ignore: invalid_use_of_visible_for_testing_member
-              await ImagePicker.platform.pickImage(source: ImageSource.camera);
+          var tempFile = await picker.getImage(source: ImageSource.camera);
 
           _processTempFile(tempFile);
         } catch (e) {
@@ -68,9 +64,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
         break;
       case _GALLERY:
         try {
-          var tempFile =
-              // ignore: invalid_use_of_visible_for_testing_member
-              await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+          var tempFile = await picker.getImage(source: ImageSource.gallery);
           _processTempFile(tempFile);
         } catch (e) {
           setState(() {
@@ -123,7 +117,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
 
       // await translateText();
       _isLoading = false;
-      Navigator.pushNamed(context, TranslatorViewPagerScreen.routeName,
+      Navigator.pushReplacementNamed(context, TranslatorViewPagerScreen.routeName,
           arguments: {
             kImageFile: _pickedImage,
             kScannedTextList: _convertedLines
@@ -136,7 +130,6 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _connectivity = Connectivity();
     _progressIndicator = CircularProgressIndicator(
       backgroundColor: Theme.of(context).accentColor,
       valueColor: new AlwaysStoppedAnimation<Color>(

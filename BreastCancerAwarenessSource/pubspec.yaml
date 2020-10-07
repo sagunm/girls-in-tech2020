@@ -29,10 +29,10 @@ dependencies:
   flutter_full_pdf_viewer: ^1.0.6
   path_provider: ^1.6.18
   provider: ^4.3.2+2
-  shared_preferences: ^0.5.6+2
+  shared_preferences: ^0.5.12
   easy_localization: ^2.3.3
   connectivity: ^0.4.9+3
-  flutter_launcher_icons: ^0.8.1
+  
 
  
   
@@ -47,10 +47,7 @@ dev_dependencies:
     sdk: flutter
 
 
-flutter_icons:
-  android: true
-  ios: false
-  image_path: "assets/icons/app_icon.png"
+
 
 
 # For information on the generic Dart part of this file, see the
@@ -79,6 +76,7 @@ flutter:
     - assets/icons/down_arrow.png
     - assets/icons/home.png
     - assets/icons/avatar_home.png
+    - assets/icons/gradient_bg.png
     - assets/icons/app_icon.png
     - assets/locales/en-US.json
     - assets/locales/hi-IN.json

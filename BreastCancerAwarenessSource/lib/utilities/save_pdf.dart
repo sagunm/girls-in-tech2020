@@ -8,7 +8,7 @@ import 'package:pdf/widgets.dart' as pw;
 
 Future<void> report(BuildContext context, List<String> text) async {
   final pdf = pw.Document(deflate: zlib.encode);
-  final font = await rootBundle.load("fonts/OpenSans-Regular.ttf");
+  final font = await rootBundle.load("fonts/Alata-Regular.ttf");
   final ttf = pw.Font.ttf(font);
   List<pw.Widget> list = [];
   for (String value in text) {
@@ -24,6 +24,6 @@ Future<void> report(BuildContext context, List<String> text) async {
   Directory directory = await getApplicationDocumentsDirectory();
   String documentPath = directory.path;
 
-  File file = File("$documentPath/translatedReport-${DateTime.now()}.pdf");
+  File file = File("$documentPath/Translated_Report-${DateTime.now()}.pdf");
   file.writeAsBytesSync(pdf.save());
 }

@@ -1,10 +1,8 @@
 import 'package:breastCancerAwareness/models/glossary.dart';
-import 'package:breastCancerAwareness/providers/auth_provider.dart';
 import 'package:breastCancerAwareness/screens/glossary_meaning_screen.dart';
 import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 class GlossaryScreen extends StatefulWidget {
