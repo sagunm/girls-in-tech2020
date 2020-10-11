@@ -2,8 +2,8 @@ import 'package:breastCancerAwareness/models/glossary.dart';
 import 'package:breastCancerAwareness/screens/glossary_meaning_screen.dart';
 import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
-import 'package:flutter/material.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 
 class GlossaryScreen extends StatefulWidget {
   static const String routeName = "GlossaryRouteName";
@@ -12,7 +12,7 @@ class GlossaryScreen extends StatefulWidget {
 }
 
 class _GlossaryScreenState extends State<GlossaryScreen> {
-  List<Glossary> glossaryList = List();
+  List<Glossary> _glossaryList = List();
 
   Future<dynamic> _returnLocalList() async {
     return _filteredGlossary;
@@ -31,7 +31,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
         children: [
           Container(
             child: Text(
-              glossary,
+              "glossary".tr(),
               style: largeTextStyle,
             ),
           ),
@@ -42,14 +42,14 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
               style: kButtonStyle,
               decoration: InputDecoration(
                   contentPadding: EdgeInsets.all(10.0),
-                  hintText: hintSearch,
+                  hintText: "search".tr(),
                   focusColor: Theme.of(context).primaryColor,
                   hintStyle: buttonTextStyle,
                   labelStyle: buttonTextStyle),
               onChanged: (string) {
                 setState(() {
                   if (string.isNotEmpty) {
-                    _filteredGlossary = glossaryList
+                    _filteredGlossary = _glossaryList
                         .where((u) => (u.term
                                 .toLowerCase()
                                 .contains(string.toLowerCase()) ||
@@ -58,22 +58,22 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                                 .contains(string.toLowerCase())))
                         .toList();
                   } else {
-                    _filteredGlossary = glossaryList;
+                    _filteredGlossary = _glossaryList;
                   }
                 });
               },
             ),
           ),
           FutureBuilder(
-              future: (glossaryList.length == 0)
+              future: (_glossaryList.length == 0)
                   ? parseJson(context.locale.languageCode)
                   : _returnLocalList(),
               builder: (ctx, snapshot) {
                 if (snapshot.hasData) {
                   if (_firstTime) {
-                    glossaryList = snapshot.data;
+                    _glossaryList = snapshot.data;
                     _firstTime = false;
-                    _filteredGlossary = glossaryList;
+                    _filteredGlossary = _glossaryList;
                   }
 
                   return Expanded(
@@ -117,7 +117,7 @@ class _GlossaryScreenState extends State<GlossaryScreen> {
                 } else {
                   return Center(
                     child: Text(
-                      "No Data",
+                      "no_data".tr(),
                       style: kButtonStyle,
                     ),
                   );

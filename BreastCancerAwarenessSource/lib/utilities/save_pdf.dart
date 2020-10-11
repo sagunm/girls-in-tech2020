@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
@@ -8,7 +9,11 @@ import 'package:pdf/widgets.dart' as pw;
 
 Future<void> report(BuildContext context, List<String> text) async {
   final pdf = pw.Document(deflate: zlib.encode);
-  final font = await rootBundle.load("fonts/Alata-Regular.ttf");
+
+  String fontAssetLocation = (context.locale.languageCode == "hi")
+      ? "fonts/Mangal-Regular.ttf"
+      : "fonts/Alata-Regular.ttf";
+  final font = await rootBundle.load(fontAssetLocation);
   final ttf = pw.Font.ttf(font);
   List<pw.Widget> list = [];
   for (String value in text) {

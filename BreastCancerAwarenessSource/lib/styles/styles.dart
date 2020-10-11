@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'appIcons.dart';
+
 class Styles {
   //FFECF4, 100%
   static BoxDecoration containerBoxShadow() {
@@ -14,7 +16,7 @@ const TextStyle kButtonStyle =
 const RoundedRectangleBorder kRoundedBorder = RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(20.0)));
 const TextStyle largeTextStyle =
-    TextStyle(color: Color(0xff4f4f4f), fontSize: 60, fontFamily: 'Alata');
+    TextStyle(color: Color(0xff4f4f4f), fontSize: 50, fontFamily: 'Alata');
 
 const TextStyle buttonTextStyle =
     TextStyle(color: Color(0xff333333), fontSize: 21, fontFamily: 'Alata');
@@ -31,3 +33,8 @@ const LinearGradient gradient = LinearGradient(
       Color(0xffEF81AE),
       Color(0xFFFFECF4),
     ]);
+BoxDecoration bgGradientDecoration = BoxDecoration(
+    image: new DecorationImage(
+  image: AssetImage(gradient_bg),
+  fit: BoxFit.fill,
+));

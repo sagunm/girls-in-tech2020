@@ -11,13 +11,13 @@ class GlossaryMeaning extends StatefulWidget {
 }
 
 class _GlossaryMeaningState extends State<GlossaryMeaning> {
-  Glossary glossary = Glossary();
+  Glossary _glossary = Glossary();
   @override
   Widget build(BuildContext context) {
     final Map<String, dynamic> args = ModalRoute.of(context).settings.arguments;
 
-    glossary.term = args["term"];
-    glossary.meaning = args["meaning"];
+    _glossary.term = args["term"];
+    _glossary.meaning = args["meaning"];
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -26,16 +26,18 @@ class _GlossaryMeaningState extends State<GlossaryMeaning> {
         body: SingleChildScrollView(
           child: Container(
             margin: EdgeInsets.all(10),
+            decoration: bgGradientDecoration,
+            padding: EdgeInsets.all(10),
             child: Column(
               children: [
-                Text(glossary.term, style: largeTextStyle),
+                Text(_glossary.term, style: largeTextStyle),
                 Container(
                     margin: EdgeInsets.all(10),
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                         border:
                             Border.all(color: Theme.of(context).primaryColor)),
-                    child: Text(glossary.meaning, style: buttonTextStyle)),
+                    child: Text(_glossary.meaning, style: buttonTextStyle)),
               ],
             ),
           ),
