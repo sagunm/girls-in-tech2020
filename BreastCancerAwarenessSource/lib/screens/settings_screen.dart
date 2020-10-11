@@ -36,7 +36,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
         child: Column(
           children: [
             Container(
-                padding: EdgeInsets.all(10),
+                padding: EdgeInsets.all(20),
                 child: Text(
                   "settings".tr(),
                   style: largeTextStyle,
