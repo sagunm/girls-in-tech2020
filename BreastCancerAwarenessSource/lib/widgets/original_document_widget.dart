@@ -1,6 +1,7 @@
 import 'dart:io';
+
 import 'package:breastCancerAwareness/styles/styles.dart';
-import 'package:breastCancerAwareness/utilities/Strings.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class OriginalDocumentWidget extends StatelessWidget {
@@ -16,7 +17,7 @@ class OriginalDocumentWidget extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
-              kOriginalDocument,
+              "original-doc".tr(),
               style: kButtonStyle,
             ),
           ),

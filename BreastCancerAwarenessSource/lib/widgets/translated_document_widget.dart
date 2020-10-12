@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/save_pdf.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:breastCancerAwareness/utilities/Strings.dart';
 
 class TranslatedDocumentWidget extends StatefulWidget {
   final List<String> _scannedText;
@@ -24,7 +25,7 @@ class _TranslatedDocumentWidgetState extends State<TranslatedDocumentWidget> {
           Container(
             padding: EdgeInsets.all(10),
             child: Text(
-              kTranslatedDocument,
+              "translated_document".tr(),
               style: kButtonStyle,
             ),
           ),
@@ -54,6 +55,7 @@ class _TranslatedDocumentWidgetState extends State<TranslatedDocumentWidget> {
                       icon: Icon(Icons.download_outlined),
                       onPressed: () async {
                         await report(context, widget._scannedText);
+                        Navigator.of(context).pop();
                       }),
                 )
               ],

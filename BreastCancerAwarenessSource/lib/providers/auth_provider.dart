@@ -24,6 +24,11 @@ class Auth with ChangeNotifier {
     return _termsConditionsAccepted;
   }
 
+  Future<void> checkAuth() async {
+    await checkForFirstTimeUser();
+    return true;
+  }
+
 //method to check if the user is the first time user or not
   Future<void> checkForFirstTimeUser() async {
     try {
@@ -52,6 +57,8 @@ class Auth with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString("userSelectedLanguage", code.toString());
       _userSelectedLanguageCode = code.toString();
+
+      notifyListeners();
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -63,6 +70,7 @@ class Auth with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       prefs.setBool("termsCondition", isAccepted);
       _termsConditionsAccepted = isAccepted;
+      notifyListeners();
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -74,6 +82,10 @@ class Auth with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       prefs.setString("username", username);
       prefs.setString("userEmail", email);
+
+      _userName = username;
+      _userEmail = email;
+      notifyListeners();
     } catch (e) {
       throw Exception(e.toString());
     }

@@ -1,16 +1,16 @@
 import 'dart:io';
+
 import 'package:breastCancerAwareness/screens/translator_view_pager_screen.dart';
 import 'package:breastCancerAwareness/services/connectivity_service.dart';
 import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Constants.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:breastCancerAwareness/utilities/utility_methods.dart';
-import 'package:connectivity/connectivity.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_ml_vision/firebase_ml_vision.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:translator/translator.dart';
-import 'package:easy_localization/easy_localization.dart';
 
 //This is the translator screen
 //User can upload or take picture and translate it to the
@@ -27,11 +27,10 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
   List<String> _convertedLines = [];
   static const String _CAMERA = "CAMERA";
   static const String _GALLERY = "GALLERY";
+  final picker = ImagePicker();
   bool _isLoading = false;
-  Connectivity _connectivity;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _isLoading = false;
   }
@@ -53,9 +52,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
     switch (selectedOption) {
       case _CAMERA:
         try {
-          var tempFile =
-              // ignore: invalid_use_of_visible_for_testing_member
-              await ImagePicker.platform.pickImage(source: ImageSource.camera);
+          var tempFile = await picker.getImage(source: ImageSource.camera);
 
           _processTempFile(tempFile);
         } catch (e) {
@@ -68,9 +65,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
         break;
       case _GALLERY:
         try {
-          var tempFile =
-              // ignore: invalid_use_of_visible_for_testing_member
-              await ImagePicker.platform.pickImage(source: ImageSource.gallery);
+          var tempFile = await picker.getImage(source: ImageSource.gallery);
           _processTempFile(tempFile);
         } catch (e) {
           setState(() {
@@ -87,14 +82,17 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
 //Method to convert the temporary image to a File format
 
   void _processTempFile(PickedFile tempFile) {
-    setState(() {
-      _isLoading = true;
-    });
-
     try {
       if (tempFile != null) {
+        setState(() {
+          _isLoading = true;
+        });
         _pickedImage = File(tempFile.path);
         _readImage();
+      } else {
+        setState(() {
+          _isLoading = false;
+        });
       }
     } on Exception catch (e) {
       _isLoading = false;
@@ -123,11 +121,11 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
 
       // await translateText();
       _isLoading = false;
-      Navigator.pushNamed(context, TranslatorViewPagerScreen.routeName,
-          arguments: {
-            kImageFile: _pickedImage,
-            kScannedTextList: _convertedLines
-          });
+      Navigator.pushReplacementNamed(
+          context, TranslatorViewPagerScreen.routeName, arguments: {
+        kImageFile: _pickedImage,
+        kScannedTextList: _convertedLines
+      });
     } on Exception catch (e) {
       _isLoading = false;
       print(e);
@@ -136,7 +134,6 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _connectivity = Connectivity();
     _progressIndicator = CircularProgressIndicator(
       backgroundColor: Theme.of(context).accentColor,
       valueColor: new AlwaysStoppedAnimation<Color>(
@@ -182,7 +179,8 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
             child: _isLoading
                 ? _progressIndicator
                 : Container(
-                    margin: EdgeInsets.all(10),
+                    decoration: bgGradientDecoration,
+                    padding: EdgeInsets.all(10),
                     child: Center(
                         child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -195,7 +193,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
                           width: 200,
                           child: Builder(
                             builder: (context) => buildOutlineButton(
-                                context, kUploadDocument, _GALLERY),
+                                context, "translate-doc".tr(), _GALLERY),
                           ),
                         ),
                         Builder(
@@ -204,7 +202,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
                             height: 50,
                             width: 200,
                             child: buildOutlineButton(
-                                context, kTakePicture, _CAMERA),
+                                context, "take-picture".tr(), _CAMERA),
                           ),
                         ),
                       ],
@@ -229,7 +227,7 @@ class _TranslatorScreenState extends State<TranslatorScreen> {
         if (await ConnectivityService().isConnectedToNetwork()) {
           _pickImage(action);
         } else
-          Utility.showSnackBar(context, noInternetMessage);
+          Utility.showSnackBar(context, "connect_internet".tr());
       },
       child: Text(
         label,

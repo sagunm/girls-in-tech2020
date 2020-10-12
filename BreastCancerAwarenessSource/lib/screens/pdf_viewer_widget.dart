@@ -13,8 +13,9 @@ class _PdfViewerPageState extends State<PdfViewerPage> {
   String path;
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> args = ModalRoute.of(context).settings.arguments;
-    path = args["path"];
+    final Map<String, dynamic> _args =
+        ModalRoute.of(context).settings.arguments;
+    path = _args["path"];
     return PDFViewerScaffold(
       appBar: AppBar(
         title: Text(kAppName),

@@ -10,7 +10,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(5),
-      width: 200,
+      width: double.infinity,
       child: OutlineButton(
         padding: EdgeInsets.all(10),
         borderSide: BorderSide(color: Theme.of(context).primaryColor),
@@ -22,6 +22,7 @@ class CustomButton extends StatelessWidget {
         child: Text(
           text,
           style: kButtonStyle,
+          textAlign: TextAlign.center,
         ),
         onPressed: () {
           Navigator.of(context).pushNamed(route);

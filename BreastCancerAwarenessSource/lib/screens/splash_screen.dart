@@ -1,15 +1,11 @@
-import 'package:breastCancerAwareness/models/languages.dart';
 import 'package:breastCancerAwareness/providers/auth_provider.dart';
+import 'package:breastCancerAwareness/screens/home_screen.dart';
 import 'package:breastCancerAwareness/screens/language_selection_screen.dart';
 import 'package:breastCancerAwareness/screens/signup_screen.dart';
 import 'package:breastCancerAwareness/screens/termsAndCondition_screen.dart';
 import 'package:breastCancerAwareness/styles/appIcons.dart';
-import 'package:breastCancerAwareness/utilities/utility_methods.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'home_screen.dart';
 
 //This is the splash screen. It is shown for 5 seconds and the app navigates to the home Screen
 
@@ -20,7 +16,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   Future<bool> _setTimerForSplashScreen() async {
-    await Future.delayed(Duration(milliseconds: 5000));
+    await Future.delayed(Duration(milliseconds: 3000));
     return true;
   }
 
@@ -32,16 +28,12 @@ class _SplashScreenState extends State<SplashScreen> {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (ctx) => LanguageSelectionScreen()));
     } else if (auth.userName.toString().isEmpty) {
-      //Utility.localize(context, auth.userSelectedLanguageCode);
       Navigator.of(context)
-          .pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
-      // Navigator.of(context)
-      //     .pushReplacement(MaterialPageRoute(builder: (ctx) => SignUpScreen()));
+          .pushReplacement(MaterialPageRoute(builder: (ctx) => SignUpScreen()));
     } else if (!auth.termsConditionsAccepted) {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (ctx) => TermsAndCondition()));
     } else {
-      //Utility.localize(context, auth.userSelectedLanguageCode);
       Navigator.of(context)
           .pushReplacement(MaterialPageRoute(builder: (ctx) => HomeScreen()));
     }
