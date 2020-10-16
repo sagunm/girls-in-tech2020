@@ -6,6 +6,9 @@ import 'package:provider/provider.dart';
 
 import 'home_screen.dart';
 
+/*
+* terms and conditions screen
+* */
 class TermsAndCondition extends StatefulWidget {
   static const String routeName = "TermsRoueName";
   @override

@@ -5,6 +5,9 @@ import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+/*
+* Glossary home screen
+* */
 class GlossaryScreen extends StatefulWidget {
   static const String routeName = "GlossaryRouteName";
   @override

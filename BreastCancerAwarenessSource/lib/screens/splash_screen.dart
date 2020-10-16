@@ -59,20 +59,6 @@ class _SplashScreenState extends State<SplashScreen> {
           image: AssetImage(splash_bg),
           fit: BoxFit.fill,
         )),
-        child: Stack(children: [
-          Container(
-            margin: EdgeInsets.only(top: 30),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(child: Center(child: Image.asset(logo))),
-                Image.asset(avatar)
-              ],
-            ),
-          ),
-          Positioned(right: 20, bottom: 75, child: Image.asset(splashText))
-        ]),
       ),
     );
   }

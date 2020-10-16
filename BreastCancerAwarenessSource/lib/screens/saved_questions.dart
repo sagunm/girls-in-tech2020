@@ -5,6 +5,10 @@ import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+/*
+*
+* Screen to view the saved questions (translated questions) in the local db
+* */
 class SavedQuestionsScreen extends StatefulWidget {
   @override
   _SavedQuestionsScreenState createState() => _SavedQuestionsScreenState();
@@ -55,7 +59,9 @@ class _SavedQuestionsScreenState extends State<SavedQuestionsScreen> {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              listOfQueries[i].translatedQuery,
+                                              "English: " +
+                                                  listOfQueries[i]
+                                                      .translatedQuery,
                                               style: buttonTextStyle.apply(
                                                   fontStyle: FontStyle.italic),
                                             ),

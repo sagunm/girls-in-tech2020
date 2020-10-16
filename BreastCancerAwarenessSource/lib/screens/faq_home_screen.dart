@@ -1,5 +1,6 @@
 import 'package:breastCancerAwareness/models/faqModel.dart';
 import 'package:breastCancerAwareness/screens/faq_pager_view_screen.dart';
+import 'package:breastCancerAwareness/screens/source_sites_screen.dart';
 import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -7,6 +8,9 @@ import 'package:flutter/material.dart';
 
 var _faqList = {};
 
+/*
+* FAQ Screen
+* */
 class FAQHomeWidget extends StatefulWidget {
   static const String faqRouteName = "faqRouteName";
   @override
@@ -47,22 +51,25 @@ class _FAQHomeWidgetState extends State<FAQHomeWidget> {
                           borderRadius: BorderRadius.circular(25),
                           gradient: gradient,
                         ),
-                        child: Row(
-                          children: [
-                            MaterialButton(
-                              onPressed: () {},
-                              child: Text(
-                                "source".tr(),
-                                style:
-                                    buttonTextStyle.apply(color: Colors.white),
-                              ),
-                            ),
-                            Icon(
-                              Icons.chevron_right,
-                              color: Colors.white,
-                            )
-                          ],
-                        ))
+                        child: MaterialButton(
+                            onPressed: () {
+                              Navigator.of(context)
+                                  .pushNamed(SourceSitesScreen.routeName);
+                            },
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Text(
+                                  "source".tr(),
+                                  style: buttonTextStyle.apply(
+                                      color: Colors.white),
+                                ),
+                                Icon(
+                                  Icons.chevron_right,
+                                  color: Colors.white,
+                                )
+                              ],
+                            )))
                   ],
                 ),
               );

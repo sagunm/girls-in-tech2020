@@ -7,6 +7,9 @@ import 'package:breastCancerAwareness/widgets/slider_dot_widget.dart';
 import 'package:breastCancerAwareness/widgets/translated_document_widget.dart';
 import 'package:flutter/material.dart';
 
+/*
+* Screen to view both the translated document and original document
+* */
 class TranslatorViewPagerScreen extends StatefulWidget {
   static const routeName = "TranslatorPageViewScreenRoute";
 
