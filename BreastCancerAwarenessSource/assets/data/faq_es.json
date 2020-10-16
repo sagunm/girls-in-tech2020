@@ -24,11 +24,8 @@
   {
     "question": "¿Cuáles son las señales de advertencia del cáncer de mama?",
     "answer": "Los cambios inusuales en el seno son una señal de advertencia de cáncer de seno y debe consultar a un doctor si ocurre alguno de estos: un bulto en el pecho o en la axila; hinchazón de todo o parte del pecho; irritación de la piel o hoyuelos; dolor en los senos; dolor en el pezón o el pezón girando hacia adentro; enrojecimiento, descamación o engrosamiento de la piel del pezón o la mama; una secreción del pezón que no sea la leche materna"
-  },
-  {
-    "question": "¿Cuáles son algunos buenos recursos en línea sobre el cáncer de mama?",
-    "answer": "https://www.breastcancer.org/es; https://www.cancer.org/es/cancer/cancer-de-seno/acerca/que-es-el-cancer-de-seno.html; https://www.cancer.net/es/tipos-de-c%C3%A1ncer/cancer-de-mama"
-  }],
+  }
+  ],
   "diagnosis": [ {
     "question": "¿Cómo se diagnostica el cáncer de mama?",
     "answer": "Si detecta uno o más de los signos de advertencia de cáncer de mama o se encuentra un área anormal en una mamografía, se recomendarán algunas pruebas de seguimiento. A menudo, no es cáncer de mama, pero estas pruebas son la única forma de saberlo con certeza. Algunas de las pruebas necesarias para llegar a un diagnóstico de cáncer de mama son una mamografía de diagnóstico, una resonancia magnética de mama, una ecografía de mama y una biopsia. Las biopsias extraen algunas células del área en cuestión para que un patólogo las estudie bajo un microscopio. El resultado de este análisis es el informe de patología, que puede traducir con BEA."
