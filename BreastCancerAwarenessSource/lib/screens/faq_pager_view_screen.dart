@@ -5,6 +5,9 @@ import 'package:breastCancerAwareness/widgets/slider_dot_widget.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
+/*
+* FAQ View Pager screen (sliding screen)
+* */
 class FAQPagerViewScreen extends StatefulWidget {
   static const String routeName = "FAQPageViewScreen";
   @override

@@ -3,6 +3,9 @@ import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:breastCancerAwareness/utilities/Strings.dart';
 import 'package:flutter/material.dart';
 
+/*
+*  Screen showing the term and meaning
+* */
 class GlossaryMeaning extends StatefulWidget {
   static const String routeName = "glossaryMeaningroute";
 
@@ -23,16 +26,17 @@ class _GlossaryMeaningState extends State<GlossaryMeaning> {
         appBar: AppBar(
           title: Text(kAppName),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            margin: EdgeInsets.all(10),
-            decoration: bgGradientDecoration,
-            padding: EdgeInsets.all(10),
+        body: Container(
+          height: double.infinity,
+          margin: EdgeInsets.all(10),
+          decoration: bgGradientDecoration,
+          padding: EdgeInsets.all(10),
+          child: SingleChildScrollView(
             child: Column(
               children: [
                 Text(_glossary.term, style: largeTextStyle),
                 Container(
-                    margin: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(top: 10),
                     padding: EdgeInsets.all(5),
                     decoration: BoxDecoration(
                         border:

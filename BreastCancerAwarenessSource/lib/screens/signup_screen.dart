@@ -6,6 +6,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+/*
+* Sign up screen to get the user name and email
+* */
 class SignUpScreen extends StatefulWidget {
   static const signupRoute = "SignUpRoute";
   @override

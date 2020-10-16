@@ -2,6 +2,9 @@ import 'package:breastCancerAwareness/models/faqModel.dart';
 import 'package:breastCancerAwareness/styles/styles.dart';
 import 'package:flutter/material.dart';
 
+/*
+* FAQ question and answer screen
+* */
 class FAQScreen extends StatefulWidget {
   final List<FAQ> faqList;
   final title;

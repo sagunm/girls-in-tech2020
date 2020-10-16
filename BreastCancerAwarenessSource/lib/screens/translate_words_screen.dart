@@ -9,6 +9,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:translator/translator.dart';
 
+/*
+*
+* Screen to translate the questions from the cureent language selection to English and save it in Sqlite
+* */
 class TranslateQuestions extends StatefulWidget {
   static const String routeName = "routeName";
   @override

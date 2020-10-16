@@ -4,6 +4,7 @@ import 'package:breastCancerAwareness/screens/glossary_meaning_screen.dart';
 import 'package:breastCancerAwareness/screens/glossary_screen.dart';
 import 'package:breastCancerAwareness/screens/home_screen.dart';
 import 'package:breastCancerAwareness/screens/language_selection_screen.dart';
+import 'package:breastCancerAwareness/screens/source_sites_screen.dart';
 import 'package:breastCancerAwareness/screens/termsAndCondition_screen.dart';
 import 'package:breastCancerAwareness/screens/translate_words_screen.dart';
 import 'package:breastCancerAwareness/screens/view_translated_documents.dart';
@@ -125,7 +126,8 @@ class MyApp extends StatelessWidget {
                 TranslateQuestions.routeName: (ctx) => TranslateQuestions(),
                 FAQHomeWidget.faqRouteName: (ctx) => FAQHomeWidget(),
                 FAQPagerViewScreen.routeName: (ctx) => FAQPagerViewScreen(),
-                TermsAndCondition.routeName: (ctx) => TermsAndCondition()
+                TermsAndCondition.routeName: (ctx) => TermsAndCondition(),
+                SourceSitesScreen.routeName: (ctx) => SourceSitesScreen()
               },
             );
           },
